@@ -24,11 +24,11 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
     var currentTime = moment().format('MMM Do, h:mm:ss a');
 
     if(currentHour >= 8 && currentHour <= 11){
-      bioMessage = `Good morning! I'm ${botName}, currently active. Owner: Sam Ramos. Time: ${currentTime} `;
+      bioMessage = `Good morning! I'm ${botName}, currently active. Owner: Marjhxn. Time: ${currentTime} `;
     }else if(currentHour >= 12 && currentHour <= 18){
-      bioMessage = `Hi! I'm bot ${botName}, currently active. Owner: Sam Ramos. Time: ${currentTime}`;
+      bioMessage = `Hi! I'm bot ${botName}, currently active. Owner: Marjhxn. Time: ${currentTime}`;
     }else{
-      bioMessage = `Hello! I'm ${botName}, currently active. Owner: Sam Ramos. Time: ${currentTime}`;
+      bioMessage = `Hello! I'm ${botName}, currently active. Owner: Marjhxn. Time: ${currentTime}`;
     }
     
     api.changeBio(bioMessage, (err) => {
@@ -41,7 +41,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 }
 
     module.exports.run = async ({ api, event, global, permssion, utils, client, Users }) => {
-    api.changeBio(`Hey I'm ${botName}, currently active. Owner: Sam Ramos. Time: ${currentTime} `, (e) => {
+    api.changeBio(`Hey I'm ${botName}, currently active. Owner: Marjhxn. Time: ${currentTime} `, (e) => {
       if(e) api.sendMessage("An error occurred" + e, event.threadID); return api.sendMessage("Changed bot's profile to", event.threadID, event.messgaeID)
     }
     )

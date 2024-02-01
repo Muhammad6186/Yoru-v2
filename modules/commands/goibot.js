@@ -540,7 +540,7 @@ module.exports.handleEvent = function ({ api, event, args, Threads }) {
     return api.sendMessage("bakit mo hinahanap baby ko🔥", threadID);
   }
 
-  if (event.body.indexOf("Yoru") == 0 || event.body.indexOf("fuji") == 0) {
+  if (event.body.indexOf("Yoru") == 0 || event.body.indexOf("yoru") == 0) {
     var msg = {
       body: rand,
     };

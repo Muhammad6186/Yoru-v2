@@ -15,7 +15,7 @@ module.exports.handleEvent = function ({ api, event, client, __GLOBAL }) {
   if (
     event.body.indexOf("mag sorry") == 0 ||
     event.body.indexOf("Mag sorry") == 0 ||
-    event.body.indexOf("fuji mag sorry") == 0 ||
+    event.body.indexOf("yoru mag sorry") == 0 ||
     event.body.indexOf("Yoru mag sorry") == 0
   ) {
     var msg = {

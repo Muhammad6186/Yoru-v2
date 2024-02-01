@@ -17,11 +17,11 @@ const greetings = [
   },
   {
     timer: '8:00:00 AM',
-    message: [`Life update:\nMiss ko na sya\n-Fuji`],
+    message: [`Life update:\nMiss ko na sya\n-Yoru`],
   },
   {
     timer: '3:00:00 AM',
-    message: [`Life update:\nNangungulila sa kanya\n-Fuji`],
+    message: [`Life update:\nNangungulila sa kanya\n-Yoru`],
   }, 
   {
     timer: '11:00:00 AM',
@@ -57,7 +57,7 @@ module.exports.onLoad = (o) =>
         o.api.sendMessage(`𝙐𝙨𝙚 /callad 𝙘𝙤𝙢𝙢𝙖𝙣𝙙 𝙞𝙛 𝙮𝙤𝙪 𝙚𝙣𝙘𝙤𝙪𝙣𝙩𝙚𝙧 𝙨𝙤𝙢𝙚 𝙚𝙧𝙧𝙤𝙧 𝙤𝙧 𝙢𝙚𝙨𝙨𝙖𝙜𝙚 𝙎𝙖𝙢 𝙍𝙖𝙢𝙤𝙨
 
 𝙋𝙡𝙚𝙖𝙨𝙚 𝘿𝙤𝙣'𝙩 𝙛𝙤𝙧𝙜𝙚𝙩 𝙩𝙤 𝙛𝙤𝙡𝙡𝙤𝙬 ⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️
- https://www.facebook.com/sam.ramos.39566905?mibextid=ZbWKwL
+ https://www.facebook.com/YORU.39566905?mibextid=ZbWKwL
 
 𝙋𝙖𝙧𝙖 𝙠𝙚𝙚𝙥 𝙪𝙥𝙙𝙖𝙩𝙚𝙙 𝙠𝙖 𝙨𝙖 𝙡𝙖𝙩𝙚𝙨𝙩 𝙪𝙥𝙙𝙖𝙩𝙚𝙨 𝙣𝙞 𝙗𝙤𝙩.𝙁𝙪𝙟𝙞🤖.`, threadID).catch((error) => {
           console.error('Error sending message:', error);

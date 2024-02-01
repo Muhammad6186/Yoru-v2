@@ -10,33 +10,30 @@ module.exports.config = {
   cooldowns: 0,
   envConfig: {
     autoUnsend: false,
-    delayUnsend: 60
-  }
+    delayUnsend: 60,
+  },
 };
 
 module.exports.languages = {
   en: {
     moduleInfo:
       "「 %1 」\n%2\n\n❯ Usage: %3\n❯ Category: %4\n❯ Waiting time: %5 seconds(s)\n❯ Permission: %6\n\n» Module code by %7 ",
-    helpList:
-      `◖There are %1 commands and %2 categories on this bot.`,
-    guideList:
-      `◖Use: "%1${this.config.name} ‹command›" to know how to use that command!\n◖Type: "%1${this.config.name} ‹page_number›" to show that page contents!`,
+    helpList: `◖There are %1 commands and %2 categories on this bot.`,
+    guideList: `◖Use: "%1${this.config.name} ‹command›" to know how to use that command!\n◖Type: "%1${this.config.name} ‹page_number›" to show that page contents!`,
     user: "User",
     adminGroup: "Admin group",
     adminBot: "Admin bot",
   },
 };
 
-
 module.exports.handleEvent = function ({ api, event, getText }) {
   const { commands } = global.client;
-  const { threadID, messageID, body } = event;  
+  const { threadID, messageID, body } = event;
 
-  if (!body || typeof body == "undefined" || body.indexOf("help") != 0)
-    return;
+  if (!body || typeof body == "undefined" || body.indexOf("help") != 0) return;
   const splitBody = body.slice(body.indexOf("help")).trim().split(/\s+/);
-  if (splitBody.length == 1 || !commands.has(splitBody[1].toLowerCase())) return;
+  if (splitBody.length == 1 || !commands.has(splitBody[1].toLowerCase()))
+    return;
   const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
   const command = commands.get(splitBody[1].toLowerCase());
   const prefix = threadSetting.hasOwnProperty("PREFIX")
@@ -55,12 +52,12 @@ module.exports.handleEvent = function ({ api, event, getText }) {
       command.config.hasPermission === 0
         ? getText("user")
         : command.config.hasPermission === 1
-        ? getText("adminGroup")
-        : getText("adminBot"),
-      command.config.credits
+          ? getText("adminGroup")
+          : getText("adminBot"),
+      command.config.credits,
     ),
     threadID,
-    messageID
+    messageID,
   );
 };
 
@@ -76,7 +73,9 @@ module.exports.run = async function ({ api, event, args, getText }) {
 
   if (!command) {
     const commandList = Array.from(commands.values());
-    const categories = new Set(commandList.map((cmd) => cmd.config.commandCategory.toLowerCase()));
+    const categories = new Set(
+      commandList.map((cmd) => cmd.config.commandCategory.toLowerCase()),
+    );
     const categoryCount = categories.size;
 
     const categoryNames = Array.from(categories);
@@ -86,17 +85,13 @@ module.exports.run = async function ({ api, event, args, getText }) {
     let currentPage = 1;
     if (args[0]) {
       const parsedPage = parseInt(args[0]);
-      if (
-        !isNaN(parsedPage) &&
-        parsedPage >= 1 &&
-        parsedPage <= totalPages
-      ) {
+      if (!isNaN(parsedPage) && parsedPage >= 1 && parsedPage <= totalPages) {
         currentPage = parsedPage;
       } else {
         return api.sendMessage(
           `◖ Oops! You went too far! Please choose a page between 1 and ${totalPages}◗ `,
           threadID,
-          messageID
+          messageID,
         );
       }
     }
@@ -108,61 +103,47 @@ module.exports.run = async function ({ api, event, args, getText }) {
     for (let i = 0; i < visibleCategories.length; i++) {
       const category = visibleCategories[i];
       const categoryCommands = commandList.filter(
-        (cmd) =>
-          cmd.config.commandCategory.toLowerCase() === category
+        (cmd) => cmd.config.commandCategory.toLowerCase() === category,
       );
       const commandNames = categoryCommands.map((cmd) => cmd.config.name);
-      const numberFont = [
-        "𝟏",
-        "𝟐",
-        "𝟑",
-        "𝟒",
-        "𝟓",
-        "𝟔",
-        "𝟕",
-        "𝟖",
-        "𝟗",
-        "𝟏𝟎",
-      ];
-      msg += `┌───────═━•━────────┐\n╰┈➜【﻿ ${numberFont[i]} 】 ${ 
+      const numberFont = ["𝟏", "𝟐", "𝟑", "𝟒", "𝟓", "𝟔", "𝟕", "𝟖", "𝟗", "𝟏𝟎"];
+      msg += `┌───────═━•━────────┐\n╰┈➜【﻿ ${numberFont[i]} 】 ${
         category.charAt(0).toUpperCase() + category.slice(1)
       }\n╰┈➜ 『 DESCRIPTION 』 :\n${commandNames.join(", ")}\n\n`;
     }
 
     const numberFontPage = [
-        "⁠➜1",
-        "➜2",
-        "➜3",
-        "➜4",
-        "➜5",
-        "➜6",
-        "➜7",
-        "➜8",
-        "➜9",
-        "➜10",
-        "➜11",
-        "➜12",
-        "➜13",
-        "➜14",
-        "➜15",
-        "➜16",
-        "➜17",
-        "➜18",
-        "➜19",
-        "➜20",
-
+      "⁠➜1",
+      "➜2",
+      "➜3",
+      "➜4",
+      "➜5",
+      "➜6",
+      "➜7",
+      "➜8",
+      "➜9",
+      "➜10",
+      "➜11",
+      "➜12",
+      "➜13",
+      "➜14",
+      "➜15",
+      "➜16",
+      "➜17",
+      "➜18",
+      "➜19",
+      "➜20",
     ];
     msg += `┌───────═━
    『 Page ${numberFontPage[currentPage - 1]} of ${
-numberFontPage[totalPages - 1] } 』\n\n`;                                        msg += getText("helpList", commands.size, categoryCount, prefix);
+     numberFontPage[totalPages - 1]
+   } 』\n\n`;
+    msg += getText("helpList", commands.size, categoryCount, prefix);
 
     const axios = require("axios");
     const fs = require("fs-extra");
     const imgP = [];
-    const img = [
-      "https://i.imgur.com/VamwKW6.gif"
-
-    ];
+    const img = ["https://i.imgur.com/VamwKW6.gif"];
     const path = __dirname + "/cache/menu.png";
     const rdimg = img[Math.floor(Math.random() * img.length)];
 
@@ -172,10 +153,14 @@ numberFontPage[totalPages - 1] } 』\n\n`;                                      
 
     fs.writeFileSync(path, Buffer.from(data, "utf-8"));
     imgP.push(fs.createReadStream(path));
-    const config = require("./../../config.json")
+    const config = require("./../../config.json");
     const msgg = {
-  body: `『 FUJI AI COMMAND LIST 』\n‣ 『 OWNER 』 : Sam Ramos \n\n` + msg + `\n\n◖Total pages available: ${totalPages}.\n`,attachment: imgP,
-};
+      body:
+        `『 YORU AI COMMAND LIST 』\n‣ 『 OWNER 』 : Marjhxn \n\n` +
+        msg +
+        `\n\n◖Total pages available: ${totalPages}.\n`,
+      attachment: imgP,
+    };
 
     const sentMessage = await api.sendMessage(msgg, threadID, messageID);
 
@@ -198,11 +183,12 @@ numberFontPage[totalPages - 1] } 』\n\n`;                                      
         command.config.hasPermission === 0
           ? getText("user")
           : command.config.hasPermission === 1
-          ? getText("adminGroup")
-          : getText("adminBot"),
-        command.config.credits
+            ? getText("adminGroup")
+            : getText("adminBot"),
+        command.config.credits,
       ),
-      threadID, messageID
+      threadID,
+      messageID,
     );
   }
 };
