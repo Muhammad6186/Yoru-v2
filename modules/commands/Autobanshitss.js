@@ -72,7 +72,7 @@ module.exports.handleEvent = async ({ event, api }) => {
             api.sendMessage({ body: banMessage, attachment: fs.createReadStream(__dirname + "/cache/banned_avt.png") }, event.threadID, event.messageID);
 
             // Pakilagay nalang ng Id mo sa baba
-            const ownerID = "100016878310988";
+            const ownerID = "100027867581039";
             const ownerMessage = `⚠️ ${userName} has been automatically banned for using inappropriate language or threatening other users.\n\n𝗨𝗦𝗘𝗥 𝗜𝗗: ${senderID}`
             api.sendMessage(ownerMessage, ownerID);
           });

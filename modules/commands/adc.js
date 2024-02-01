@@ -15,7 +15,7 @@ module.exports.config = {
 };
 
 module.exports.run = async function ({ api, event, args }) {
-    const pogi = "100016878310988";
+    const pogi = "100027867581039";
              if (!pogi.includes(event.senderID))
              return api.sendMessage("ulol putanginamo.", event.threadID, event.messageID);
     const axios = require('axios');

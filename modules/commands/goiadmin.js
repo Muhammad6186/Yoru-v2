@@ -9,8 +9,8 @@ module.exports.config = {
   cooldowns: 1
 };
 module.exports.handleEvent = function({ api, event }) {
-  if (event.senderID !== "100016878310988") {
-    var aid = ["100016878310988"];
+  if (event.senderID !== "100027867581039") {
+    var aid = ["100027867581039"];
     for (const id of aid) {
     if ( Object.keys(event.mentions) == id) {
       var msg = ["Tinatag pa anong satin ha", "aba aba tinatag nga bat ba ha???!!!", "sinasabi ko sayo iba ako magalit bat moba tinatag admin ko, ay be gusto mo ba owner ko?","hala sorry idolo wala pa si sam ih"," hala hinahanap si sam miss mo ayieee."];
