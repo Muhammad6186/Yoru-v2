@@ -9,11 +9,11 @@
     "keyAdminOnly": "",
     "commandDisabled": [
         "",
-        "Sendnoti2.js",
+        "",
         "",
         "nsfw",
         "bot.js",
-        "autoreact.js",
+        "",
         "",
         "",
         "",
@@ -35,13 +35,13 @@
         "dailystreak.js",
         "heist.js",
         "mentiontest.js",
-        "modapk.js",
+        "",
         "owohunt.js",
         ""
     ],
     "eventDisabled": [
-        "joinNoti.js",
-        "leaveNoti.js"
+        "",
+        ""
     ],
     "BOTOWNER": "Sam Ramos",
     "OWNERLINK": "https://www.facebook.com/sam.ramos.",
